@@ -14,6 +14,8 @@ script:
     
 after_failure:
 - find *Rcheck -name '*.fail' -print -exec cat '{}' \;
+# show actions of the OOM killer
+- sudo dmesg
 # show memory usage again
 - sudo free -m -t
 # show actions of the OOM killer
