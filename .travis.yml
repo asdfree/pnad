@@ -1,6 +1,7 @@
 # R for travis: see documentation at https://docs.travis-ci.com/user/languages/r
 
 language: r
+cache: packages
 sudo: required
 apt_packages:
 - unixodbc-dev
@@ -28,6 +29,9 @@ before_install:
 # show memory usage before and after shutdown of services
 - sudo service --status-all
 - sudo free -m -t
+- sudo /etc/init.d/docker stop
+- sudo /etc/init.d/acpid stop
+- sudo /etc/init.d/memcached stop
 - sudo /etc/init.d/mysql stop
 - sudo /etc/init.d/postgresql stop
 - sudo free -m -t
