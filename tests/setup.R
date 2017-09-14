@@ -12,7 +12,7 @@ which_records <- sample( seq( nrow( pnad_cat ) ) , round( nrow( pnad_cat ) * 0.5
 # always sample year == 2011
 pnad_cat <- unique( rbind( pnad_cat[ which_records , ] , subset( pnad_cat , year == 2011 ) ) )
 
-# if 2008 gets sampled, put it first
-pnad_cat <- pnad_cat[ order( pnad_cat$year != 2008 ) , ]
+# never sample year == 2008 on travis because it's too big
+if( .Platform$OS.type != 'windows' ) pnad_cat <- subset( pnad_cat , year == 2008 )
 
 lodown( "pnad" , pnad_cat )
