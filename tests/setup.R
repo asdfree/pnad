@@ -12,4 +12,7 @@ record_categories <- ceiling( seq( nrow( pnad_cat ) ) / ceiling( nrow( pnad_cat 
 
 pnad_cat <- unique( rbind( pnad_cat[ record_categories == this_sample_break , ] , pnad_cat[ pnad_cat$year == 2011 , ] ) )
 
+# skip 2008 because it doesn't fit
+pnad_cat <- subset( pnad_cat , year != 2008 )
+
 lodown( "pnad" , pnad_cat )
