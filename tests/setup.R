@@ -8,7 +8,7 @@ pnad_cat <-
 	get_catalog( "pnad" ,
 		output_dir = file.path( getwd() ) )
 
-record_categories <- ceiling( seq( nrow( pnad_cat ) ) / ceiling( nrow( pnad_cat ) / 5 ) )
+record_categories <- ceiling( seq( nrow( pnad_cat ) ) / ceiling( nrow( pnad_cat ) / 11 ) )
 
 pnad_cat <- unique( rbind( pnad_cat[ record_categories == this_sample_break , ] , pnad_cat[ pnad_cat$year == 2011 , ] ) )
 
