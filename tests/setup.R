@@ -26,7 +26,7 @@ pnad_cat <-
 # 2011 only
 pnad_cat <- subset( pnad_cat , year == 2011 )
 # download the microdata to your local computer
-lodown( "pnad" , pnad_cat )
+
 
 options( survey.lonely.psu = "adjust" )
 
