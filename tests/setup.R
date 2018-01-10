@@ -11,7 +11,7 @@ pnad_cat <-
 # skip 2008 because it doesn't fit
 pnad_cat <- subset( pnad_cat , year != 2008 )
 
-record_categories <- ceiling( seq( nrow( pnad_cat ) ) / ceiling( nrow( pnad_cat ) / 11 ) )
+record_categories <- ceiling( seq( nrow( pnad_cat ) ) / ceiling( nrow( pnad_cat ) / 14 ) )
 
 pnad_cat <- pnad_cat[ record_categories == this_sample_break , ]
 
