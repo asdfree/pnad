@@ -13,9 +13,7 @@ pnad_cat <-
 # skip 2008 because it doesn't fit
 pnad_cat <- subset( pnad_cat , year != 2008 )
 
-record_categories <- ceiling( seq( nrow( pnad_cat ) ) / ceiling( nrow( pnad_cat ) / 13 ) )
-
-pnad_cat <- pnad_cat[ record_categories == this_sample_break , ]
+pnad_cat <- pnad_cat[ split( seq( nrow( pnad_cat ) ) , sort( seq( nrow( pnad_cat ) ) %% 15 ) )[[ this_sample_break ]] , ]
 
 lodown( "pnad" , pnad_cat )
 if( any( pnad_cat$year == 2011 ) ){
