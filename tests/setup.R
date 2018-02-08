@@ -15,17 +15,17 @@ pnad_cat <- subset( pnad_cat , year != 2008 )
 
 pnad_cat <- pnad_cat[ split( seq( nrow( pnad_cat ) ) , 1 + sort( seq( nrow( pnad_cat ) ) %% 13 ) )[[ this_sample_break ]] , ]
 
-lodown( "pnad" , pnad_cat )
+pnad_cat <- lodown( "pnad" , pnad_cat )
 if( any( pnad_cat$year == 2011 ) ){
-library(lodown)
-# examine all available PNAD microdata files
-pnad_cat <-
-	get_catalog( "pnad" ,
-		output_dir = file.path( getwd() ) )
 
-# 2011 only
-pnad_cat <- subset( pnad_cat , year == 2011 )
-# download the microdata to your local computer
+
+
+
+
+
+
+
+
 
 
 options( survey.lonely.psu = "adjust" )
