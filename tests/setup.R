@@ -13,7 +13,7 @@ pnad_cat <-
 # skip 2008 because it doesn't fit
 pnad_cat <- subset( pnad_cat , year != 2008 )
 
-pnad_cat <- pnad_cat[ split( seq( nrow( pnad_cat ) ) , 1 + sort( seq( nrow( pnad_cat ) ) %% 25 ) )[[ this_sample_break ]] , ]
+pnad_cat <- pnad_cat[ split( seq( nrow( pnad_cat ) ) , 1 + sort( seq( nrow( pnad_cat ) ) %% 20 ) )[[ this_sample_break ]] , ]
 
 pnad_cat <- lodown( "pnad" , pnad_cat )
 if( any( pnad_cat$year == 2011 ) ){
