@@ -57,7 +57,7 @@ this_url <-
 	paste0(
 		"https://ftp.ibge.gov.br/Trabalho_e_Rendimento/" ,
 		"Pesquisa_Nacional_por_Amostra_de_Domicilios_continua/" ,
-		"Trimestral/Microdados/2023/PNADC_012023.zip"
+		"Trimestral/Microdados/2023/PNADC_012023_20250815.zip"
 	)
 
 download.file( this_url , this_tf , mode = 'wb' )
@@ -244,28 +244,28 @@ glm_result <-
 summary( glm_result )
 nationwide_adult_population <- svytotal( ~ pia , pnad_design , na.rm = TRUE )
 	
-stopifnot( round( coef( nationwide_adult_population ) / 1000000 , 3 ) == 174.228 )
+stopifnot( round( coef( nationwide_adult_population ) / 1000000 , 3 ) == 171.116 )
 stopifnot( round( cv( nationwide_adult_population ) / 1000000 , 3 ) == 0 )
 	
 nationwide_labor_force <- svytotal( ~ pea_c , pnad_design , na.rm = TRUE )
 
-stopifnot( round( coef( nationwide_labor_force ) / 1000000 , 3 ) == 107.257 )
+stopifnot( round( coef( nationwide_labor_force ) / 1000000 , 3 ) == 105.225 )
 stopifnot( round( cv( nationwide_labor_force ) * 100 , 1 ) == 0.2 )
 	
 nationwide_employed <- svytotal( ~ ocup_c , pnad_design , na.rm = TRUE )
 
-stopifnot( round( coef( nationwide_employed ) / 1000000 , 3 ) == 97.825 )
+stopifnot( round( coef( nationwide_employed ) / 1000000 , 3 ) == 95.978 )
 stopifnot( round( cv( nationwide_employed ) * 100 , 1 ) == 0.2 )
 	
 nationwide_unemployed <- svytotal( ~ desocup30 , pnad_design , na.rm = TRUE )
 
-stopifnot( round( coef( nationwide_unemployed ) / 1000000 , 3 ) == 9.432 )
+stopifnot( round( coef( nationwide_unemployed ) / 1000000 , 3 ) == 9.247 )
 stopifnot( round( cv( nationwide_unemployed ) * 100 , 1 ) == 1.2 )
 	
 nationwide_not_in_labor_force <-
 	svytotal( ~ as.numeric( pia & !pea_c ) , pnad_design , na.rm = TRUE )
 
-stopifnot( round( coef( nationwide_not_in_labor_force ) / 1000000 , 3 ) == 66.972 )
+stopifnot( round( coef( nationwide_not_in_labor_force ) / 1000000 , 3 ) == 65.891 )
 stopifnot( round( cv( nationwide_not_in_labor_force ) * 100 , 1 ) == 0.3 )
 	
 
